@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.ibm.eventstreams.connect'
+version = '1.0-SNAPSHOT'
+
+description = """kafka-connect-mq-source"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'javax.jms', name: 'javax.jms-api', version:'2.0.1'
+    compile group: 'com.ibm.mq', name: 'com.ibm.mq.allclient', version:'9.1.0.0'
+    compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version:'1.60'
+    compile group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version:'1.60'
+    testCompile group: 'junit', name: 'junit', version:'4.12'
+    testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.25'
+    compileOnly group: 'org.apache.kafka', name: 'connect-api', version:'2.0.0'
+    compileOnly group: 'org.apache.kafka', name: 'connect-json', version:'2.0.0'
+}
